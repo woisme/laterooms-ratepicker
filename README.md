@@ -1,7 +1,8 @@
 # laterooms-ratepicker
 
-An element providing a starting point for your own reusable Polymer elements.
+This is a Polymer Element that pulls in rates from Laterooms API. It is still a work in progress and what is here is pre production. To look at it locally then please use the instructions below.
 
+Any issues or feature requests please add.
 
 ## Dependencies
 
