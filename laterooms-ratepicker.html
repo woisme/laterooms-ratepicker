@@ -39,11 +39,16 @@ Example:
       padding: 20px;
       font-size: 20px;
       margin: 10px;
-      width: 30px;
+      width: 50px;
+    }
+
+    .inputs input {
+      width: 100px;
     }
 
     .daterow {
       display: inline-block;
+      margin-top: 50px;
     }
 
     .fullrow {
@@ -55,6 +60,11 @@ Example:
     }
 
     .dateoutput {
+      margin: 20px;
+      font-size: 20px;
+    }
+
+    code {
       margin: 20px;
       font-size: 20px;
     }
@@ -89,19 +99,24 @@ Example:
         last-response="{{response}}">
       </iron-ajax>
 
+      <code>&lt;laterooms hotelid="<span>{{hotelid}}</span>" affiliateid="<span>{{affiliateid}}</span>"&gt;&lt;/laterooms&gt;</code>
+
       <div class="daterow">
-        <input class="paper-font-body2" value="{{day::input}}"></input>
-        <input class="paper-font-body2" value="{{month::input}}"></input>
-        <input class="paper-font-body2" value="{{year::input}}"></input>
-        <input class="paper-font-body2" value="{{nights::input}}"></input>
+        <input class="paper-font-body2" value="{{day::input}}" placeholder="day"></input>
+        <input class="paper-font-body2" value="{{month::input}}" placeholder="month"></input>
+        <input class="paper-font-body2" value="{{year::input}}" placeholder="year"></input>
+        <input class="paper-font-body2" value="{{nights::input}}" placeholder="nights"></input>
+      </div>
+      <div class="inputs">
+        <input class="paper-font-body2" value="{{hotelid::input}}" placeholder="hotelid"></input>
+        <input class="paper-font-body2" value="{{affiliateid::input}}" placeholder="affiliateid"></input>
       </div>
 
     <div class="dateoutput">
-      <span>
-        This is the full string of day, month, year, nights, no of adults, no of children
+
+        <span style="text-align:center; color: red;">{{options}}</span><span> is the String of day, month, year, nights, no of adults, no of children
         which will be passed to laterooms
       </span>
-      <span style="text-align:center">{{options}}</span>
     </div
     <template items="{{response}}">
       <paper-material elevation="1">
@@ -112,9 +127,8 @@ Example:
 
       </paper-material>
 
-
       </div>
-    </template>
+
   </template>
 
 </dom-module>
@@ -126,43 +140,43 @@ Example:
       // Day of the week that the rate is requested for
       day: {
         type: String,
-        value: '01',
         notify: true
       },
       // Month that the rate is requested for
       month: {
         type: String,
-        value: '09',
         notify: true
       },
       // Year that the rate is requested for
       year: {
         type: String,
-        value: '15',
         notify: true
       },
       // No of Nights that the stay is for
       nights: {
         type: String,
-        value: '03',
         notify: true
       },
       // String being produced that will be used to request rate.
-      // This includes day, month, year, nights, hotelid, accountid,
+      // This includes day, month, year, nights, hotelid, affiliateid,
       // number of adults "2" and number of children "0"
       options: {
         type: Number,
-        value: '01091503',
+        value: 'String Value',
         computed: '_computeOptions(day, month, year, nights, _numberofadults, _numberofchildren)'
       },
       // Laterooms ID code signifying the hotel.This can usually be found
       // in the URL of the Laterooms hotels
       hotelid: {
-        type: String
+        type: String,
+        value: 'affiliateid',
+        notify: true
       },
       // Account Number of the affiliate
-      accountid: {
-        type: String
+      affiliateid: {
+        type: String,
+        value: 'affiliateid',
+        notify: true
       },
       // This by default is 2
       _numberofadults: {
