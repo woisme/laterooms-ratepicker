@@ -4,6 +4,10 @@ This is a Polymer Element that pulls in rates from Laterooms API. It is still a 
 
 Any issues or feature requests please add.
 
+You can pull this github repo and then install the bower dependecies as per below or you can use
+
+`bower install woisme/laterooms-ratepicker`
+
 ## Dependencies
 
 Element dependencies are managed via [Bower](http://bower.io/). You can
