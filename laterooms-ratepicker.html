@@ -99,7 +99,9 @@ Example:
         last-response="{{response}}">
       </iron-ajax>
 
-      <code>&lt;laterooms hotelid="<span>{{hotelid}}</span>" affiliateid="<span>{{affiliateid}}</span>"&gt;&lt;/laterooms&gt;</code>
+      <div class="lateroomscode">
+        <code>&lt;laterooms hotelid="<span>{{hotelid}}</span>" affiliateid="<span>{{affiliateid}}</span>"&gt;&lt;/laterooms&gt;</code>
+      </div>
 
       <div class="daterow">
         <input class="paper-font-body2" value="{{day::input}}" placeholder="day"></input>
@@ -169,7 +171,7 @@ Example:
       // in the URL of the Laterooms hotels
       hotelid: {
         type: String,
-        value: 'affiliateid',
+        value: 'hotelid',
         notify: true
       },
       // Account Number of the affiliate
