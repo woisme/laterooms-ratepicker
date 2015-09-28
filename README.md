@@ -1,7 +1,12 @@
 # laterooms-ratepicker
 
-An element providing a starting point for your own reusable Polymer elements.
+This is a Polymer Element that pulls in rates from Laterooms API. It is still a work in progress and what is here is pre production. To look at it locally then please use the instructions below.
 
+Any issues or feature requests please add.
+
+You can pull this github repo and then install the bower dependecies as per below or you can use
+
+`bower install woisme/laterooms-ratepicker`
 
 ## Dependencies
 
