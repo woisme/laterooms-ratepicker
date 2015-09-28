@@ -1,0 +1,200 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../paper-material/paper-material.html">
+<!--
+A Web Component Polymer element that pulls in Laterooms Rates.
+Each time a value is changed a new API request is made for a new rate.
+
+Example:
+
+    <laterooms-ratepicker></laterooms-ratepicker>
+
+@group Seed Elements
+@element laterooms-ratepicker
+@demo demo/index.html
+@hero hero.svg
+-->
+<dom-module id="laterooms-ratepicker">
+
+  <style>
+    :host {
+      display: inline-block;
+      font-family: Roboto, Helvetica, sans-serif;
+      font-size: 30px;
+      font-weight: 300;
+      margin: 30px;
+    }
+
+    input {
+      padding: 20px;
+      font-size: 20px;
+      margin: 10px;
+      width: 50px;
+    }
+
+    .inputs input {
+      width: 100px;
+    }
+
+    .daterow {
+      display: inline-block;
+      margin-top: 50px;
+    }
+
+    .fullrow {
+      display: inline-block;
+    }
+
+    .fabbutton {
+      margin: 20px;
+    }
+
+    .dateoutput {
+      margin: 20px;
+      font-size: 20px;
+    }
+
+    code {
+      margin: 20px;
+      font-size: 20px;
+    }
+
+    paper-material {
+      margin-left: auto;
+      margin-right: auto;
+      width: 300px;
+      height: 150px;
+      margin-top: 50px;
+    }
+    .content {
+      padding: 20px;
+      font-size: 20px;
+      text-align: -webkit-center;
+      line-height: 40px;
+    }
+    span {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+  </style>
+
+  <template>
+
+      <iron-ajax
+        auto
+        url="{{url}}"
+        handle-as="json"
+        params="{{options}}"
+        last-response="{{response}}">
+      </iron-ajax>
+
+      <div class="lateroomscode">
+        <code>&lt;laterooms hotelid="<span>{{hotelid}}</span>" affiliateid="<span>{{affiliateid}}</span>"&gt;&lt;/laterooms&gt;</code>
+      </div>
+
+      <div class="daterow">
+        <input class="paper-font-body2" value="{{day::input}}" placeholder="day"></input>
+        <input class="paper-font-body2" value="{{month::input}}" placeholder="month"></input>
+        <input class="paper-font-body2" value="{{year::input}}" placeholder="year"></input>
+        <input class="paper-font-body2" value="{{nights::input}}" placeholder="nights"></input>
+      </div>
+      <div class="inputs">
+        <input class="paper-font-body2" value="{{hotelid::input}}" placeholder="hotelid"></input>
+        <input class="paper-font-body2" value="{{affiliateid::input}}" placeholder="affiliateid"></input>
+      </div>
+
+    <div class="dateoutput">
+
+        <span style="text-align:center; color: red;">{{options}}</span><span> is the String of day, month, year, nights, no of adults, no of children
+        which will be passed to laterooms
+      </span>
+    </div
+    <template items="{{response}}">
+      <paper-material elevation="1">
+        <div class="content">
+          Laterooms Prices From
+          {{item.rate}}
+        </div>
+
+      </paper-material>
+
+      </div>
+
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'laterooms-ratepicker',
+    properties: {
+      // Day of the week that the rate is requested for
+      day: {
+        type: String,
+        notify: true
+      },
+      // Month that the rate is requested for
+      month: {
+        type: String,
+        notify: true
+      },
+      // Year that the rate is requested for
+      year: {
+        type: String,
+        notify: true
+      },
+      // No of Nights that the stay is for
+      nights: {
+        type: String,
+        notify: true
+      },
+      // String being produced that will be used to request rate.
+      // This includes day, month, year, nights, hotelid, affiliateid,
+      // number of adults "2" and number of children "0"
+      options: {
+        type: Number,
+        value: 'String Value',
+        computed: '_computeOptions(day, month, year, nights, _numberofadults, _numberofchildren)'
+      },
+      // Laterooms ID code signifying the hotel.This can usually be found
+      // in the URL of the Laterooms hotels
+      hotelid: {
+        type: String,
+        value: 'hotelid',
+        notify: true
+      },
+      // Account Number of the affiliate
+      affiliateid: {
+        type: String,
+        value: 'affiliateid',
+        notify: true
+      },
+      // This by default is 2
+      _numberofadults: {
+        type: String,
+        value: '02'
+      },
+      // By default this is 2
+      _numberofchildren: {
+        type: String,
+        value: '00'
+      }
+
+    },
+    // This is how the options value is generated
+    _computeOptions: function(day, month, year, nights, _numberofadults, _numberofchildren) {
+      return day + month + year + nights + _numberofadults + _numberofchildren;
+    }
+  });
+</script>

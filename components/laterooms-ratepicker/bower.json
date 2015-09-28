@@ -1,0 +1,32 @@
+{
+  "name": "laterooms-ratepicker",
+  "version": "1.0.1",
+  "authors": [
+    "woisme <mywoisme@gmail.com>"
+  ],
+  "description": "A hotel listing date picker with no of nights. This will be used to call in rates from a Online Travel Agency",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed",
+    "travel",
+    "hotel",
+    "datepicker"
+  ],
+  "main": "laterooms-ratepicker.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/woisme/laterooms-ratepicker/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "iron-icons": "PolymerElements/iron-icons#^1.0.0",
+    "paper-fab": "PolymerElements/paper-fab#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}
