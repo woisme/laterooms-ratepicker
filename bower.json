@@ -17,8 +17,7 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/woisme/laterooms-ratepicker/",
   "ignore": [
-    "/.*",
-    "/test/"
+    "/.*"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
